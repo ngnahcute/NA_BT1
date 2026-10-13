@@ -1,0 +1,246 @@
+/* Phần B: Hoàn thiện CSS theo đề, KHÔNG dùng thư viện ngoài. */
+* { box-sizing: border-box; }
+:root { 
+  font-family: Arial, Helvetica, sans-serif; 
+  color: #1f2937; 
+  --primary: #176650;
+  --primary-hover: #114e3d;
+  --bg-main: #f7faf9;
+  --card-bg: #ffffff;
+  --border-color: #e5e7eb;
+}
+
+body { 
+  margin: 0; 
+  background: var(--bg-main); 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container { 
+  width: min(1060px, 94%); 
+  margin: 0 auto; 
+}
+
+/* Header */
+.site-header { 
+  padding: 24px 0; 
+  background: var(--primary); 
+  color: white; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.site-header h1 { margin: 0 0 6px; font-size: 24px; }
+.site-header p { margin: 0; font-size: 14px; opacity: 0.9; }
+.header-badge {
+  background: rgba(255,255,255,0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Main Layout */
+.main-layout {
+  margin-top: 24px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid var(--border-color);
+  height: fit-content;
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 18px;
+  color: var(--primary);
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--bg-main);
+  padding-bottom: 8px;
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 14px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+.required { color: #dc2626; }
+
+.form-group input, 
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus, 
+.form-group select:focus,
+.toolbar input:focus,
+.toolbar select:focus {
+  border-color: var(--primary);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.error-msg {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+}
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+/* Toolbar & Table */
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.search-box { flex: 2; min-width: 200px; }
+.filter-box { flex: 1; min-width: 150px; }
+
+.toolbar input, .toolbar select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.task-stats {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.task-table th, .task-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.task-table th {
+  background: #f9fafb;
+  font-weight: bold;
+}
+
+.task-table tr:hover {
+  background: #fcfdfd;
+}
+
+/* Status & Priority Badges */
+.badge {
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.badge-cao { background: #fee2e2; color: #991b1b; }
+.badge-trung-binh { background: #fef3c7; color: #92400e; }
+.badge-thap { background: #e0f2fe; color: #075985; }
+
+.status-done {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.btn-action {
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+  margin-right: 4px;
+}
+.btn-toggle { background: #0954e9; color: #dde2eb; }
+.btn-toggle:hover { background: #b6bbc3; }
+.btn-delete { background: #fee2e2; color: #dc2626; }
+.btn-delete:hover { background: #fecaca; }
+
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+  font-style: italic;
+}
+.hidden { display: none; }
+
+/* Footer */
+.site-footer { 
+  margin-top: 28px; 
+  padding: 20px; 
+  text-align: center; 
+  background: #ffffff;
+  border-top: 1px solid var(--border-color);
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* Responsive cho điện thoại rộng khoảng 375px */
+@media (max-width: 768px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+}
